@@ -26,13 +26,12 @@ public class Task2 {
 
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Введите тип данных: ");
-		scan = new Scanner(System.in);
 		String type = scan.nextLine();
 
 		switch (type) {
 			case "int":
 				System.out.print("Введите значение переменной: ");
-				if (scan.hasNextInt()){
+				if (scan.hasNextInt()) {
 					input1 = scan.nextInt();
 					input1 %= 2;
 					System.out.println("Остаток от деления на 2 равен " + input1);
