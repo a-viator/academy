@@ -24,12 +24,8 @@ public class Task4 {
 		b = a;
 
 		for (power = 1; b <= 1_000_000; power++) {
-			if (power == 1) {
-				System.out.println(a + " в степени " + power + " равен " + b);
-			} else {
-				b = b * a;
-				System.out.println(a + " в степени " + power + " равен " + b);
-			}
+			b = (int) Math.pow(a, power);
+			System.out.println(a + " в степени " + power + " равен " + b);
 		}
 	}
 }
