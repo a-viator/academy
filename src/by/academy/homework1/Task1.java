@@ -23,8 +23,8 @@ public class Task1 {
 
 		int age;                                            //age of the customer
 		double price;                                       //purchase price without discount
-
 		Scanner scan = new Scanner(System.in);
+
 		System.out.print("Введите свой возраст: ");
 		age = scan.nextInt();
 		System.out.print("Введите стоимость покупок: ");

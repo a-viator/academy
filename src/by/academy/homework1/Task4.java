@@ -15,9 +15,10 @@ public class Task4 {
 		int a;
 		int b;
 		int power;
+		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Введите число: ");
-		Scanner scan = new Scanner(System.in);
+
 		a = scan.nextInt();
 		scan.close();
 

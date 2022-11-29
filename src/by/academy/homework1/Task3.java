@@ -14,8 +14,8 @@ public class Task3 {
 
 		int number;
 		int multiplier = 1;
-
 		Scanner scan = new Scanner(System.in);
+
 		System.out.print("Введите простое число: ");
 
 		if (scan.hasNextInt()) {                               //проверка на целочисленность
