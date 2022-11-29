@@ -21,57 +21,63 @@ public class Task2 {
 		int input1;
 		double input2;
 		float input3;
+		boolean isTrue = false;
 		String input4;
 		String input5;
-
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Введите тип данных: ");
-		String type = scan.nextLine();
 
-		switch (type) {
-			case "int":
-				System.out.print("Введите значение переменной: ");
-				if (scan.hasNextInt()) {
-					input1 = scan.nextInt();
-					input1 %= 2;
-					System.out.println("Остаток от деления на 2 равен " + input1);
-				} else {
-					System.out.println("Введите int переменную!");
-				}
-				break;
-			case "double":
-				System.out.print("Введите значение переменной: ");
-				if (scan.hasNextDouble()) {
-					input2 = scan.nextDouble();
-					input2 = input2 * 0.7;
-					System.out.println("70% от числа равны: " + input2);
-				} else {
-					System.out.println("Введите double переменную!");
-				}
-				break;
-			case "float":
-				System.out.print("Введите значение переменной: ");
-				if (scan.hasNextFloat()) {
-					input3 = scan.nextFloat();
-					input3 *= input3;
-					System.out.println("Квадрат числа равен: " + input3);
-				} else {
-					System.out.println("Введите float переменную!");
-				}
-				break;
-			case "char":
-				System.out.print("Введите значение переменной: ");
-				input4 = scan.nextLine();
-				System.out.print("Первым символом был " + input4.charAt(0));
-				break;
-			case "String":
-				System.out.print("Введите значение переменной: ");
-				input5 = scan.nextLine();
-				System.out.print("Hello " + input5);
-				break;
-			default:
-				System.out.println("Unsupported type");
-		}
+		do {                                          //Если ввёл неправильное значение - перезапускает программу
+			System.out.print("Введите тип данных: ");
+			String type = scan.nextLine();
+
+			switch (type) {
+				case "int":
+					System.out.print("Введите значение переменной: ");
+					if (scan.hasNextInt()) {
+						input1 = scan.nextInt();
+						input1 %= 2;
+						System.out.println("Остаток от деления на 2 равен " + input1);
+						isTrue = true;
+					} else {
+						System.out.println("Введите int переменную!");
+					}
+					break;
+				case "double":
+					System.out.print("Введите значение переменной: ");
+					if (scan.hasNextDouble()) {
+						input2 = scan.nextDouble();
+						input2 = input2 * 0.7;
+						System.out.println("70% от числа равны: " + input2);
+						isTrue = true;
+					} else {
+						System.out.println("Введите double переменную!");
+					}
+					break;
+				case "float":
+					System.out.print("Введите значение переменной: ");
+					if (scan.hasNextFloat()) {
+						input3 = scan.nextFloat();
+						input3 *= input3;
+						System.out.println("Квадрат числа равен: " + input3);
+						isTrue = true;
+					} else {
+						System.out.println("Введите float переменную!");
+					}
+					break;
+				case "char":
+					System.out.print("Введите значение переменной: ");
+					input4 = scan.nextLine();
+					System.out.print("Первым символом был " + input4.charAt(0));
+					break;
+				case "String":
+					System.out.print("Введите значение переменной: ");
+					input5 = scan.nextLine();
+					System.out.print("Hello " + input5);
+					break;
+				default:
+					System.out.println("Unsupported type");
+			}
+		} while (!isTrue);
 		scan.close();
 	}
 }
