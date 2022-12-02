@@ -21,7 +21,7 @@ public class Task2 {
 		int input1;
 		double input2;
 		float input3;
-		boolean isTrue = false;
+		boolean isTrue = true;
 		String input4;
 		String input5;
 		Scanner scan = new Scanner(System.in);
@@ -32,52 +32,63 @@ public class Task2 {
 
 			switch (type) {
 				case "int":
-					System.out.print("Введите значение переменной: ");
-					if (scan.hasNextInt()) {
-						input1 = scan.nextInt();
-						input1 %= 2;
-						System.out.println("Остаток от деления на 2 равен " + input1);
-						isTrue = true;
-					} else {
-						System.out.println("Введите int переменную!");
-					}
+					do {
+						System.out.print("Введите значение переменной: ");
+						if (scan.hasNextInt()) {
+							input1 = scan.nextInt();
+							input1 %= 2;
+							System.out.println("Остаток от деления на 2 равен " + input1);
+							isTrue = false;
+						} else {
+							System.out.println("Введите int переменную!");
+							scan.nextLine();                                                //очистка сканнера
+						}
+					} while (isTrue);
 					break;
 				case "double":
-					System.out.print("Введите значение переменной: ");
-					if (scan.hasNextDouble()) {
-						input2 = scan.nextDouble();
-						input2 = input2 * 0.7;
-						System.out.println("70% от числа равны: " + input2);
-						isTrue = true;
-					} else {
-						System.out.println("Введите double переменную!");
-					}
+					do {
+						System.out.print("Введите значение переменной: ");
+						if (scan.hasNextDouble()) {
+							input2 = scan.nextDouble();
+							input2 = input2 * 0.7;
+							System.out.println("70% от числа равны: " + input2);
+							isTrue = false;
+						} else {
+							System.out.println("Введите double переменную!");
+							scan.nextLine();                                                //очистка сканнера
+						}
+					} while (isTrue);
 					break;
 				case "float":
-					System.out.print("Введите значение переменной: ");
-					if (scan.hasNextFloat()) {
-						input3 = scan.nextFloat();
-						input3 *= input3;
-						System.out.println("Квадрат числа равен: " + input3);
-						isTrue = true;
-					} else {
-						System.out.println("Введите float переменную!");
-					}
+					do {
+						System.out.print("Введите значение переменной: ");
+						if (scan.hasNextFloat()) {
+							input3 = scan.nextFloat();
+							input3 *= input3;
+							System.out.println("Квадрат числа равен: " + input3);
+							isTrue = false;
+						} else {
+							System.out.println("Введите float переменную!");
+							scan.nextLine();                                                //очистка сканнера
+						}
+					} while (isTrue);
 					break;
 				case "char":
 					System.out.print("Введите значение переменной: ");
 					input4 = scan.nextLine();
 					System.out.print("Первым символом был " + input4.charAt(0));
+					isTrue = false;
 					break;
 				case "String":
 					System.out.print("Введите значение переменной: ");
 					input5 = scan.nextLine();
 					System.out.print("Hello " + input5);
+					isTrue = false;
 					break;
 				default:
 					System.out.println("Unsupported type");
 			}
-		} while (!isTrue);
+		} while (isTrue);
 		scan.close();
 	}
 }
