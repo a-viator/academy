@@ -20,6 +20,7 @@ public class Task7 {
 		number = sc.nextInt();
 		System.out.println("Введите предпологаемую последнюю цифру для проверки: ");
 		lastDigit = sc.nextInt();
+		sc.close();
 
 		if (qualifier(number, lastDigit)) {
 			System.out.println("Верно");
