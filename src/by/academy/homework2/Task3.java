@@ -21,6 +21,7 @@ public class Task3 {
 		if (word1.length() % 2 == 0) {
 			System.out.println("Введите второе слово: ");
 			word2 = sc.nextLine();
+			sc.close();
 			if (word2.length() % 2 == 0) {
 
 				char[] w1 = word1.toCharArray();
