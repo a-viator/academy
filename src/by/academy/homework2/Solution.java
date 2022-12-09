@@ -13,7 +13,7 @@ package by.academy.homework2;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Task0 {
+public class Solution {
 
 	static int pairs(int k, int[] arr) {
 		int pairsCount = 0;
