@@ -8,7 +8,6 @@
  */
 package by.academy.homework2;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,7 +30,6 @@ public class Deal {
 					n = temp;
 					shuffle(deck);                                  //вызов метода перетусовки колоды
 					deal(n, deck);                                  //вызов метода раздачи карт
-//					dealAlternative(n, deck);                       //вызов метода раздачи карт, якобы по одной
 					break;
 				} else {
 					System.out.println("В покере от 2 до 10 игроков");
@@ -55,28 +53,14 @@ public class Deal {
 			array[rand] = array[i];
 			array[i] = temp;
 		}
-		System.out.print(Arrays.toString(array) + "\n");            //вывожу растусованую колоду для проверки
 	}
 
-	/* Метод, который раздаёт игрокам по 5 карт */
+	/* Метод, который раздаёт игрокам по 5 карт (якобы по одной) */
 
 	public static void deal(int n, String[] array) {
 		System.out.println("\nРаздаю на " + n + ":\n");
-
-		for (int i = 0; i < n * 5; i++) {
-			System.out.print(array[i]);
-			if (i % 5 == 4) {
-				System.out.println("\n");
-			}
+		for (int i = 0; i < n; i++) {
+			System.out.println(array[i] + " " + array[i + n] + " " + array[i + n * 2] + " " + array[i + n * 3] + " " + array[i + n * 4] + "\n");
 		}
 	}
-
-	/* Метод, который раздаёт игрокам по 5 карт (псевдо по одной) */
-
-//	public static void dealAlternative(int n, String[] array) {
-//		System.out.println("\nРаздаю на " + n + ":\n");
-//		for (int i = 0; i < n; i++) {
-//			System.out.println(array[i] + " " + array[i + n] + " " + array[i + n * 2] + " " + array[i + n * 3] + " " + array[i + n * 4] + "\n");
-//		}
-//	}
 }
