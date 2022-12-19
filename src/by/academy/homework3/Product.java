@@ -27,7 +27,7 @@ public class Product {
 	}
 
 	public double calcPrice() {                 //метод подсчёта стоимости
-		return price * quantity;
+		return price * quantity * discount();
 	}
 
 	public double discount() {                  //метод подсчёта скидки
