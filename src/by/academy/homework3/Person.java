@@ -2,8 +2,8 @@ package by.academy.homework3;
 
 public class Person {
 
-	protected String name;
-	protected double money;
+	private String name;
+	private double money;
 
 	public Person() {
 		super();

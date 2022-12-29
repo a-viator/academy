@@ -1,18 +1,17 @@
 package by.academy.homework3;
 
+import java.util.Objects;
+
 public class Shoes extends Product {
 
-	String size;
+	private int size;
 
 	public Shoes() {
 		super();
 	}
 
-	public Shoes(String name, double quantity, double price, String size) {
-		super();
-		this.name = name;
-		this.quantity = quantity;
-		this.price = price;
+	public Shoes(String name, double quantity, double price, int size) {
+		super(name, quantity, price);
 		this.size = size;
 	}
 
@@ -20,27 +19,32 @@ public class Shoes extends Product {
 	public String toString() {
 		return "Shoes{" +
 				"size='" + size + '\'' +
-				", name='" + name + '\'' +
-				", quantity=" + quantity +
-				", price=" + price +
-				'}';
+				"} " + super.toString();
 	}
 
 	@Override
-	public double calcPrice() {
-		return super.calcPrice();
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		Shoes shoes = (Shoes) o;
+		return size == shoes.size;
 	}
 
-	@Override
 	public double discount() {
-		return super.discount();
+		if (2 <= getQuantity() && getQuantity() <= 5) {
+			return 0.9;
+		} else if (getQuantity() > 5) {
+			return 0.8;
+		}
+		return 1;
 	}
 
-	public String getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 }

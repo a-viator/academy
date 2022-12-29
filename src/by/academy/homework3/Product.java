@@ -1,10 +1,12 @@
 package by.academy.homework3;
 
-public class Product {
+import java.util.Objects;
 
-	protected String name;
-	protected double quantity;
-	protected double price;
+public abstract class Product {
+
+	private String name;
+	private double quantity;
+	private double price;
 
 	public Product() {
 		super();
@@ -26,13 +28,19 @@ public class Product {
 				'}';
 	}
 
-	public double calcPrice() {                 //метод подсчёта стоимости
+	@Override
+	public boolean equals(Object o) {                                       //убрал quantity из сравнения
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Product product = (Product) o;
+		return Double.compare(product.price, price) == 0 && name.equals(product.name);
+	}
+
+	public final double calcPrice() {                 //метод подсчёта стоимости
 		return price * quantity * discount();
 	}
 
-	public double discount() {                  //метод подсчёта скидки
-		return 1;
-	}
+	protected abstract double discount();
 
 	public String getName() {
 		return name;

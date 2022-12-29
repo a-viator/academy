@@ -2,17 +2,14 @@ package by.academy.homework3;
 
 public class Paint extends Product {
 
-	String color;
+	private String color;
 
 	public Paint() {
 		super();
 	}
 
 	public Paint(String name, double quantity, double price, String color) {
-		super();
-		this.name = name;
-		this.quantity = quantity;
-		this.price = price;
+		super(name, quantity, price);
 		this.color = color;
 	}
 
@@ -20,20 +17,14 @@ public class Paint extends Product {
 	public String toString() {
 		return "Paint{" +
 				"color='" + color + '\'' +
-				", name='" + name + '\'' +
-				", quantity=" + quantity +
-				", price=" + price +
-				'}';
+				"} " + super.toString();
 	}
 
-	@Override
-	public double calcPrice() {
-		return super.calcPrice();
-	}
-
-	@Override
 	public double discount() {
-		return super.discount();
+		if (color.equals("белый")) {
+			return 0.9;
+		}
+		return 1;
 	}
 
 	public String getColor() {
