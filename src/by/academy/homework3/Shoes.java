@@ -1,8 +1,8 @@
 package by.academy.homework3;
 
-import by.academy.homework3.annotation.Produser;
+import by.academy.homework3.annotation.Producer;
 
-@Produser(StartYear = 2022, country = "Беларусь", founderFullName = "Марко")
+@Producer(StartYear = 2022, country = "Беларусь", founderFullName = "Марко")
 public class Shoes extends Product {
 
 	private int size;

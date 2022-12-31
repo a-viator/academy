@@ -1,12 +1,11 @@
 package by.academy.homework3;
 
-import java.time.LocalDate;
-
 public class Application {
 
 	public static void main(String[] args) {
 
-		String number = "+375292610811";
+		Person seller = new Person("Shop", 10000);
+		Person buyer = new Person("Customer", 10000);
 
 		Product[] products = new Product[12];
 		products[0] = new Shoes("Ботинки", 10, 5, 39);
@@ -22,9 +21,7 @@ public class Application {
 		products[10] = new Electronics("Духовка", 100, 10, 380);
 		products[11] = new Electronics("Микроволновка", 100, 10, 220);
 
-		Product[] bucket = new Product[12];
-
-
+		Product[] bucket = new Product[products.length];
 
 		Deal.addToBucket(0, 10, products, bucket);
 		Deal.addToBucket(1, 10, products, bucket);
@@ -32,13 +29,18 @@ public class Application {
 		Deal.addToBucket(4, 5, products, bucket);
 		Deal.addToBucket(4, 5, products, bucket);
 		Deal.addToBucket(10, 10, products, bucket);
-
+		Deal.addToBucket(5, 10, products, bucket);
+		Deal.addToBucket(6, 10, products, bucket);
+		Deal.addToBucket(7, 10, products, bucket);
+		Deal.addToBucket(8, 5, products, bucket);
+		Deal.addToBucket(9, 100, products, bucket);
+		Deal.addToBucket(11, 100, products, bucket);
 
 		for (Product i : products) {
 			System.out.println(i);
 		}
 
-		System.out.println("_____________");
+		System.out.println("______________________________________________________________");
 
 		int i = 0;
 		while (bucket[i] != null) {
@@ -46,26 +48,20 @@ public class Application {
 			i++;
 		}
 
-		System.out.println("_____________");
-
 		Deal.removeFromBucket(0, 1, products, bucket);
-
 
 		for (Product j : products) {
 			System.out.println(j);
 		}
 
-		System.out.println("_____________");
+		System.out.println("______________________________________________________________");
 
-
-		int j = 0;
-		while (bucket[j] != null) {
-			System.out.println(bucket[j]);
-			j++;
+		while (bucket[i] != null) {
+			System.out.println(bucket[i]);
+			i++;
 		}
-
-		System.out.println("_____________");
-
-		Check.calcTotalPrice(bucket);
+		Deal.enoughMoney(seller, buyer, bucket);
+		System.out.println(seller.getMoney());
+		System.out.println(buyer.getMoney());
 	}
 }

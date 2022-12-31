@@ -25,13 +25,22 @@ public abstract class Product {
 	}
 
 	@Override
-	public boolean equals(Object o) {                                       //убрал quantity и price из сравнения
+	public boolean equals(Object o) {                                               //убрал quantity и price из сравнения
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Product product = (Product) o;
 		return name.equals(product.name);
 	}
-	public final double calcPrice() {                                       //метод подсчёта стоимости продукта
+
+	public static double calcTotalPrice(Product[] bucket) {
+		double totalPrice = 0;
+		for (Product product : bucket) {
+			if (product != null) {
+				totalPrice += product.getPrice();
+			}
+		}return totalPrice;
+	}
+	public final double calcSubTotalPrice() {                                       //метод подсчёта стоимости продукта
 		return getPrice() * getQuantity() * discount();
 	}
 

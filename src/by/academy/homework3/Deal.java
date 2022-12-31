@@ -4,9 +4,14 @@ import java.time.LocalDate;
 
 public class Deal {
 
-	private Person seller = new Person("Shop", 10000);
-	private Person buyer = new Person("Customer", 10000);
+	Person seller;
+	Person buyer;
 
+
+	Deal(Person seller, Person buyer) {
+		this.seller = seller;
+		this.buyer = buyer;
+	}
 
 	public static void addToBucket(int index, double quantity, Product[] products, Product[] bucket) {
 
@@ -19,7 +24,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						product.setPrice(product.calcPrice());                                                          //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						product.setPrice(product.calcSubTotalPrice());
 						isBreak = true;
 						break;
 					}
@@ -32,7 +37,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Shoes) products[index]).getSize());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						bucket[i].setPrice((bucket[i]).calcPrice());
+						bucket[i].setPrice((bucket[i]).calcSubTotalPrice());
 						break;
 					}
 				}
@@ -47,7 +52,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						product.setPrice(product.calcPrice());
+						product.setPrice(product.calcSubTotalPrice());
 						isBreak = true;
 						break;
 					}
@@ -60,7 +65,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Paint) products[index]).getColor());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						bucket[i].setPrice((bucket[i]).calcPrice());
+						bucket[i].setPrice((bucket[i]).calcSubTotalPrice());
 						break;
 					}
 				}
@@ -75,7 +80,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						product.setPrice(product.calcPrice());
+						product.setPrice(product.calcSubTotalPrice());
 						isBreak = true;
 						break;
 					}
@@ -88,7 +93,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Electronics) products[index]).getVoltage());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
-						bucket[i].setPrice((bucket[i]).calcPrice());
+						bucket[i].setPrice((bucket[i]).calcSubTotalPrice());
 						break;
 					}
 				}
@@ -110,7 +115,7 @@ public class Deal {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
 							bucket[index].setPrice(product.getPrice());
-							bucket[index].setPrice((bucket[index]).calcPrice());
+							bucket[index].setPrice((bucket[index]).calcSubTotalPrice());
 							break;
 						}
 					}
@@ -125,7 +130,7 @@ public class Deal {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
 							bucket[index].setPrice(product.getPrice());
-							bucket[index].setPrice((bucket[index]).calcPrice());
+							bucket[index].setPrice((bucket[index]).calcSubTotalPrice());
 							break;
 						}
 					}
@@ -140,7 +145,7 @@ public class Deal {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
 							bucket[index].setPrice(product.getPrice());
-							bucket[index].setPrice((bucket[index]).calcPrice());
+							bucket[index].setPrice((bucket[index]).calcSubTotalPrice());
 							break;
 						}
 					}
@@ -149,7 +154,17 @@ public class Deal {
 		}
 	}
 
-	public static void DeadLineDate() {
-		System.out.println(LocalDate.now().plusDays(10));
+	public static void enoughMoney(Person seller, Person buyer, Product[] bucket) {
+		if (buyer.getMoney() > Product.calcTotalPrice(bucket)) {
+			seller.setMoney(seller.getMoney() + Product.calcTotalPrice(bucket));
+			buyer.setMoney(buyer.getMoney() - Product.calcTotalPrice(bucket));
+			Receipt.printReceipt(bucket);
+		} else {
+			System.out.println("Недостаточно средств");
+		}
+	}
+
+	public static void deadLineDate() {
+		System.out.println("Dead line: " + LocalDate.now().plusDays(10));
 	}
 }
