@@ -1,5 +1,7 @@
 package by.academy.homework3;
 
+import java.util.Objects;
+
 public class Paint extends Product {
 
 	private String color;
@@ -15,9 +17,17 @@ public class Paint extends Product {
 
 	@Override
 	public String toString() {
-		return "Paint{" +
-				"color='" + color + '\'' +
-				"} " + super.toString();
+		return "Paint " + super.toString() +
+				", color ='" + color + '\'';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		Paint paint = (Paint) o;
+		return Objects.equals(color, paint.color);
 	}
 
 	public double discount() {

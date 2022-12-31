@@ -1,7 +1,8 @@
 package by.academy.homework3;
 
-import java.util.Objects;
+import by.academy.homework3.annotation.Produser;
 
+@Produser(StartYear = 2022, country = "Беларусь", founderFullName = "Марко")
 public class Shoes extends Product {
 
 	private int size;
@@ -17,9 +18,8 @@ public class Shoes extends Product {
 
 	@Override
 	public String toString() {
-		return "Shoes{" +
-				"size='" + size + '\'' +
-				"} " + super.toString();
+		return "Shoes " + super.toString()
+				+ ", size='" + size + '\'';
 	}
 
 	@Override

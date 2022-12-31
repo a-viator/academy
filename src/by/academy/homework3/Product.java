@@ -1,7 +1,5 @@
 package by.academy.homework3;
 
-import java.util.Objects;
-
 public abstract class Product {
 
 	private String name;
@@ -21,23 +19,21 @@ public abstract class Product {
 
 	@Override
 	public String toString() {
-		return "Product{" +
-				"name='" + name + '\'' +
-				", quantity=" + quantity +
-				", price=" + price +
-				'}';
+		return "name = '" + name + '\'' +
+				", quantity = " + quantity +
+				", price = " + price;
 	}
 
 	@Override
-	public boolean equals(Object o) {                                       //убрал quantity из сравнения
+	public boolean equals(Object o) {                                       //убрал quantity и price из сравнения
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Product product = (Product) o;
-		return Double.compare(product.price, price) == 0 && name.equals(product.name);
+		return name.equals(product.name);
 	}
 
-	public final double calcPrice() {                 //метод подсчёта стоимости
-		return price * quantity * discount();
+	public final double calcPrice() {                                       //метод подсчёта стоимости продукта
+		return getPrice() * getQuantity() * discount();
 	}
 
 	protected abstract double discount();

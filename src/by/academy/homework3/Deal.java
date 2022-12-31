@@ -8,59 +8,128 @@ public class Deal {
 	private Person buyer = new Person("Customer", 10000);
 
 
-	public static void addToBasket(int index, double quantity, Product[] products, Product[] basket) {
+	public static void addToBucket(int index, double quantity, Product[] products, Product[] bucket) {
+
 		if (products[index] instanceof Shoes) {
-			for (int j = 0; j < basket.length; j++) {
-				for (int i = j + 1; i < basket.length; i++) {
-					if (basket[i].getName() != null && basket[i].getName().equals(products[index].getName()) &&
-							((Shoes) basket[i]).getSize() == (((Shoes) products[index]).getSize())) {
-						basket[i].setQuantity(basket[i].getQuantity() + quantity);
-					} else if (basket[i] == null) {
-						basket[i] = new Shoes((products[index]).getName(), (products[index]).getQuantity(),
+			if (quantity > products[index].getQuantity()) {
+				System.out.println("В магазине осталось " + products[index].getQuantity() + " продуктов данного типа");
+			} else {
+				boolean isBreak = false;
+				for (Product product : bucket) {
+					if (product != null && product.equals(products[index])) {
+						product.setQuantity(product.getQuantity() + quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						isBreak = true;
+						break;
+					}
+				}
+				for (int i = 0; i < bucket.length; i++) {
+					if (isBreak) {
+						break;
+					} else if (bucket[i] == null) {
+						bucket[i] = new Shoes((products[index]).getName(), (products[index]).getQuantity(),
 								(products[index]).getPrice(), ((Shoes) products[index]).getSize());
-						basket[i].setQuantity(quantity);
-						if (basket[i].getQuantity() < (products[index]).getQuantity()) {
-							products[index].setQuantity(products[index].getQuantity() - quantity);
-						} else {
-							System.out.println("В магазине нет столько ботинок");
-						}
+						bucket[i].setQuantity(quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						break;
 					}
 				}
 			}
 		}
 		if (products[index] instanceof Paint) {
-			for (int j = 0; j < basket.length; j++) {
-				for (int i = j + 1; i < basket.length; i++) {
-					if (basket[i].getName() != null && basket[i].getName().equals(products[index].getName()) &&
-							((Paint) basket[i]).getColor().equals(((Paint) products[index]).getColor())) {
-						basket[i].setQuantity(basket[i].getQuantity() + quantity);
-					} else if (basket[i] == null) {
-						basket[i] = new Paint((products[index]).getName(), (products[index]).getQuantity(),
+			if (quantity > products[index].getQuantity()) {
+				System.out.println("В магазине осталось " + products[index].getQuantity() + " продуктов данного типа");
+			} else {
+				boolean isBreak = false;
+				for (Product product : bucket) {
+					if (product != null && product.equals(products[index])) {
+						product.setQuantity(product.getQuantity() + quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						isBreak = true;
+						break;
+					}
+				}
+				for (int i = 0; i < bucket.length; i++) {
+					if (isBreak) {
+						break;
+					} else if (bucket[i] == null) {
+						bucket[i] = new Paint((products[index]).getName(), (products[index]).getQuantity(),
 								(products[index]).getPrice(), ((Paint) products[index]).getColor());
-						basket[i].setQuantity(quantity);
-						if (basket[i].getQuantity() < (products[index]).getQuantity()) {
-							products[index].setQuantity(products[index].getQuantity() - quantity);
-						} else {
-							System.out.println("В магазине нет столько краски");
-						}
+						bucket[i].setQuantity(quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						break;
 					}
 				}
 			}
 		}
 		if (products[index] instanceof Electronics) {
-			for (int j = 0; j < basket.length; j++) {
-				for (int i = j + 1; i < basket.length; i++) {
-					if (basket[i].getName() != null && basket[i].getName().equals(products[index].getName()) &&
-							((Electronics) basket[i]).getVoltage() == (((Electronics) products[index]).getVoltage())) {
-						basket[i].setQuantity(basket[i].getQuantity() + quantity);
-					} else if (basket[i] == null) {
-						basket[i] = new Shoes((products[index]).getName(), (products[index]).getQuantity(),
+			if (quantity > products[index].getQuantity()) {
+				System.out.println("В магазине осталось " + products[index].getQuantity() + " продуктов данного типа");
+			} else {
+				boolean isBreak = false;
+				for (Product product : bucket) {
+					if (product != null && product.equals(products[index])) {
+						product.setQuantity(product.getQuantity() + quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						isBreak = true;
+						break;
+					}
+				}
+				for (int i = 0; i < bucket.length; i++) {
+					if (isBreak) {
+						break;
+					} else if (bucket[i] == null) {
+						bucket[i] = new Electronics((products[index]).getName(), (products[index]).getQuantity(),
 								(products[index]).getPrice(), ((Electronics) products[index]).getVoltage());
-						basket[i].setQuantity(quantity);
-						if (basket[i].getQuantity() < (products[index]).getQuantity()) {
-							products[index].setQuantity(products[index].getQuantity() - quantity);
-						} else {
-							System.out.println("В магазине нет столько товара");
+						bucket[i].setQuantity(quantity);
+						products[index].setQuantity(products[index].getQuantity() - quantity);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	public static void removeFromBucket(int index, double quantity, Product[] products, Product[] bucket) {
+
+		if (bucket[index] == null) {
+			System.out.println("В корзине нет продукта с таким индексом");
+		} else {
+			if (bucket[index] instanceof Shoes) {
+				if (quantity > bucket[index].getQuantity()) {
+					System.out.println("В корзине " + bucket[index].getQuantity() + " продуктов данного типа");
+				} else {
+					for (Product product : products) {
+						if (bucket[index] != null && bucket[index].equals(product)) {
+							product.setQuantity(product.getQuantity() + quantity);
+							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							break;
+						}
+					}
+				}
+			}
+			if (bucket[index] instanceof Paint) {
+				if (quantity > bucket[index].getQuantity()) {
+					System.out.println("В корзине " + bucket[index].getQuantity() + " продуктов данного типа");
+				} else {
+					for (Product product : products) {
+						if (bucket[index] != null && bucket[index].equals(product)) {
+							product.setQuantity(product.getQuantity() + quantity);
+							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							break;
+						}
+					}
+				}
+			}
+			if (bucket[index] instanceof Electronics) {
+				if (quantity > bucket[index].getQuantity()) {
+					System.out.println("В корзине " + bucket[index].getQuantity() + " продуктов данного типа");
+				} else {
+					for (Product product : products) {
+						if (bucket[index] != null && bucket[index].equals(product)) {
+							product.setQuantity(product.getQuantity() + quantity);
+							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							break;
 						}
 					}
 				}
@@ -68,21 +137,7 @@ public class Deal {
 		}
 	}
 
-	public static void removeFromBasket(int index, double quantity, Product[] products, Product[] basket) {
-		if (basket[index].getQuantity() > quantity) {
-			for (int i = 0; i < products.length; i++) {
-				if (basket[index].equals(products[i])) {              //переопределить метод
-					basket[index].setQuantity(basket[index].getQuantity() - quantity);
-					products[i].setQuantity(products[index].getQuantity() + quantity);
-				} else {
-					;
-				}
-			}
-		} else {
-			basket[index] = null;
-		}
+	public static void DeadLineDate() {
+		System.out.println(LocalDate.now().plusDays(10));
 	}
-
-
-	LocalDate DeadlineDate = LocalDate.now().plusDays(10);
 }

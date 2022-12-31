@@ -15,13 +15,21 @@ public class Electronics extends Product {
 
 	@Override
 	public String toString() {
-		return "Electronics{" +
-				"voltage=" + voltage +
-				"} " + super.toString();
+		return "Electronics " + super.toString() +
+				", voltage=" + voltage;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		Electronics that = (Electronics) o;
+		return voltage == that.voltage;
 	}
 
 	public double discount() {
-		if (getQuantity() >=2) {
+		if (getQuantity() >= 2) {
 			return 0.9;
 		}
 		return 1;
