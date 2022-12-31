@@ -7,12 +7,12 @@ public class Deal {
 	Person seller;
 	Person buyer;
 
-
 	Deal(Person seller, Person buyer) {
 		this.seller = seller;
 		this.buyer = buyer;
 	}
 
+	//Добавляет предметы в корзину, пересчитывая стоимость отдельных позиций с учётом количества и скидки
 	public static void addToBucket(int index, double quantity, Product[] products, Product[] bucket) {
 
 		if (products[index] instanceof Shoes) {
@@ -101,6 +101,7 @@ public class Deal {
 		}
 	}
 
+	//Удаляет предметы из корзины, пересчитывая стоимость отдельных позиций с учётом количества и скидки
 	public static void removeFromBucket(int index, double quantity, Product[] products, Product[] bucket) {
 
 		if (bucket[index] == null) {
@@ -154,6 +155,7 @@ public class Deal {
 		}
 	}
 
+	//Печатает и Списывает/Зачисляет деньги, если у покупателя их досточно
 	public static void enoughMoney(Person seller, Person buyer, Product[] bucket) {
 		if (buyer.getMoney() > Product.calcTotalPrice(bucket)) {
 			seller.setMoney(seller.getMoney() + Product.calcTotalPrice(bucket));

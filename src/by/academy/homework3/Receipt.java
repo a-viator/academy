@@ -6,7 +6,7 @@ public class Receipt {
 
 
 		System.out.printf("---------------------------------------%n");
-		System.out.printf("%-16s%1s%16s%n","|","RECEIPT","|");
+		System.out.printf("%-16s%1s%16s%n", "|", "RECEIPT", "|");
 		System.out.printf("---------------------------------------%n");
 		int number = 1;
 		for (Product product : bucket) {
@@ -16,7 +16,7 @@ public class Receipt {
 			}
 		}
 		System.out.printf("---------------------------------------%n");
-		System.out.printf("%-24s%14s%n","Итоговая стоимость:", Product.calcTotalPrice(bucket));
+		System.out.printf("%-24s%14s%n", "Итоговая стоимость:", Product.calcTotalPrice(bucket));
 		System.out.printf("---------------------------------------%n");
 		Date.date();
 		System.out.printf("---------------------------------------%n");

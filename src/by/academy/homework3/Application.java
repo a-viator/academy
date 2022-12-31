@@ -61,7 +61,7 @@ public class Application {
 			i++;
 		}
 		Deal.enoughMoney(seller, buyer, bucket);
-		System.out.println(seller.getMoney());
-		System.out.println(buyer.getMoney());
+		System.out.println("Сумма на счету у продавца стала: " + seller.getMoney());
+		System.out.println("Сумма на счету у покупателя стала: " + buyer.getMoney());
 	}
 }

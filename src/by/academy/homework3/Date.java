@@ -7,7 +7,6 @@ public class Date {
 
 	public static void date() {
 
-
 		LocalDateTime now = LocalDateTime.now();
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");

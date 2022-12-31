@@ -11,6 +11,8 @@ import java.lang.annotation.Target;
 public @interface Producer {
 
 	int StartYear();
+
 	String country();
+
 	String founderFullName();
 }

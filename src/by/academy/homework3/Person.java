@@ -9,7 +9,7 @@ public class Person {
 		super();
 	}
 
-	public Person (String name, double money) {
+	public Person(String name, double money) {
 		super();
 		this.name = name;
 		this.money = money;
