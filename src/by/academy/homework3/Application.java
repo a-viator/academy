@@ -26,7 +26,12 @@ public class Application {
 
 
 
+		Deal.addToBucket(0, 10, products, bucket);
+		Deal.addToBucket(1, 10, products, bucket);
 		Deal.addToBucket(2, 10, products, bucket);
+		Deal.addToBucket(4, 5, products, bucket);
+		Deal.addToBucket(4, 5, products, bucket);
+		Deal.addToBucket(10, 10, products, bucket);
 
 
 		for (Product i : products) {
@@ -60,5 +65,7 @@ public class Application {
 		}
 
 		System.out.println("_____________");
+
+		Check.calcTotalPrice(bucket);
 	}
 }

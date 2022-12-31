@@ -31,7 +31,6 @@ public abstract class Product {
 		Product product = (Product) o;
 		return name.equals(product.name);
 	}
-
 	public final double calcPrice() {                                       //метод подсчёта стоимости продукта
 		return getPrice() * getQuantity() * discount();
 	}

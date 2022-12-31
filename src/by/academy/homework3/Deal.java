@@ -19,6 +19,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						product.setPrice(product.calcPrice());                                                          //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						isBreak = true;
 						break;
 					}
@@ -31,6 +32,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Shoes) products[index]).getSize());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						bucket[i].setPrice((bucket[i]).calcPrice());
 						break;
 					}
 				}
@@ -45,6 +47,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						product.setPrice(product.calcPrice());
 						isBreak = true;
 						break;
 					}
@@ -57,6 +60,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Paint) products[index]).getColor());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						bucket[i].setPrice((bucket[i]).calcPrice());
 						break;
 					}
 				}
@@ -71,6 +75,7 @@ public class Deal {
 					if (product != null && product.equals(products[index])) {
 						product.setQuantity(product.getQuantity() + quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						product.setPrice(product.calcPrice());
 						isBreak = true;
 						break;
 					}
@@ -83,6 +88,7 @@ public class Deal {
 								(products[index]).getPrice(), ((Electronics) products[index]).getVoltage());
 						bucket[i].setQuantity(quantity);
 						products[index].setQuantity(products[index].getQuantity() - quantity);
+						bucket[i].setPrice((bucket[i]).calcPrice());
 						break;
 					}
 				}
@@ -103,6 +109,8 @@ public class Deal {
 						if (bucket[index] != null && bucket[index].equals(product)) {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							bucket[index].setPrice(product.getPrice());
+							bucket[index].setPrice((bucket[index]).calcPrice());
 							break;
 						}
 					}
@@ -116,6 +124,8 @@ public class Deal {
 						if (bucket[index] != null && bucket[index].equals(product)) {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							bucket[index].setPrice(product.getPrice());
+							bucket[index].setPrice((bucket[index]).calcPrice());
 							break;
 						}
 					}
@@ -129,6 +139,8 @@ public class Deal {
 						if (bucket[index] != null && bucket[index].equals(product)) {
 							product.setQuantity(product.getQuantity() + quantity);
 							bucket[index].setQuantity(bucket[index].getQuantity() - quantity);
+							bucket[index].setPrice(product.getPrice());
+							bucket[index].setPrice((bucket[index]).calcPrice());
 							break;
 						}
 					}
