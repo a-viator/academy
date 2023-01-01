@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Menu {
 
 	public static void startMenu(Scanner sc, Deal deal) {
+		System.out.println("Добро пожаловать в наш магазин!");
 		while (true) {
-			System.out.println("Добро пожаловать в наш магазин!");
 			System.out.println("Нажмите: ");
 			System.out.println("1. Чтобы посмотреть перечень товаров");
 			System.out.println("2. Чтобы выбрать товар");
@@ -23,7 +23,7 @@ public class Menu {
 				}
 				case 4 -> Deal.printBucketList(deal.getBucket());
 				case 0 -> {
-					Deal.enoughMoney(deal.getSeller(), deal.getBuyer(),deal.getBucket());
+					Deal.enoughMoney(deal.getSeller(), deal.getBuyer(), deal.getBucket());
 					return;
 				}
 				default -> System.out.println("Обратитесь к администратору а помощью");

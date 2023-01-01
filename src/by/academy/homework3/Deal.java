@@ -72,7 +72,7 @@ public class Deal {
 						break;
 					} else if (bucket[i] == null) {
 						bucket[i] = new Paint((products[index - 1]).getName(), (products[index - 1]).getQuantity(),
-								(products[index - 1]).getPrice(), ((Paint) products[index]).getColor());
+								(products[index - 1]).getPrice(), ((Paint) products[index - 1]).getColor());
 						bucket[i].setQuantity(quantity);
 						products[index - 1].setQuantity(products[index - 1].getQuantity() - quantity);
 						bucket[i].setPrice((bucket[i]).calcSubTotalPrice());
@@ -127,6 +127,9 @@ public class Deal {
 							bucket[index - 1].setQuantity(bucket[index - 1].getQuantity() - quantity);
 							bucket[index - 1].setPrice(product.getPrice());
 							bucket[index - 1].setPrice((bucket[index - 1]).calcSubTotalPrice());
+							if (bucket[index - 1].getQuantity() == 0) {
+								bucket[index - 1] = null;
+							}
 							break;
 						}
 					}
@@ -200,11 +203,11 @@ public class Deal {
 		if (!isNotEmpty) {
 			System.out.println("Корзина пуста");
 		} else {
-			int i = 0;
 			System.out.println("Покупки в корзине: ");
-			while (bucket[i] != null) {
-				System.out.println(i + 1 + ". " + bucket[i]);
-				i++;
+			for (int i = 0; i < bucket.length; i++) {
+				if (bucket[i] != null) {
+					System.out.println(i + 1 + ". " + bucket[i]);
+				}
 			}
 		}
 	}
