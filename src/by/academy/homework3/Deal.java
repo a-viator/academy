@@ -23,7 +23,7 @@ public class Deal {
 	}
 
 	//Добавляет предметы в корзину, пересчитывая стоимость отдельных позиций с учётом количества и скидки
-	public static void addToBucket(int index, double quantity, Product[] products, Product[] bucket) {
+	public void addToBucket(int index, double quantity, Product[] products, Product[] bucket) {
 
 		if (products[index - 1] instanceof Shoes) {
 			if (quantity > products[index - 1].getQuantity()) {
@@ -112,7 +112,7 @@ public class Deal {
 	}
 
 	//Удаляет предметы из корзины, пересчитывая стоимость отдельных позиций с учётом количества и скидки
-	public static void removeFromBucket(int index, double quantity, Product[] products, Product[] bucket) {
+	public void removeFromBucket(int index, double quantity, Product[] products, Product[] bucket) {
 
 		if (bucket[index - 1] == null) {
 			System.out.println("В корзине нет продукта с таким индексом");
@@ -169,29 +169,24 @@ public class Deal {
 	}
 
 	//Печатает чек и Списывает/Зачисляет деньги, если у покупателя их досточно
-	public static void enoughMoney(Person seller, Person buyer, Product[] bucket) {
-		if (buyer.getMoney() > Product.calcTotalPrice(bucket)) {
-			seller.setMoney(seller.getMoney() + Product.calcTotalPrice(bucket));
-			buyer.setMoney(buyer.getMoney() - Product.calcTotalPrice(bucket));
-			Receipt.printReceipt(bucket);
+	public void enoughMoney(Deal deal) {
+		if (buyer.getMoney() > calcTotalPrice(bucket)) {
+			seller.setMoney(seller.getMoney() + calcTotalPrice(bucket));
+			buyer.setMoney(buyer.getMoney() - calcTotalPrice(bucket));
+			Receipt.printReceipt(deal);
 		} else {
 			System.out.println("Недостаточно средств");
 		}
 	}
 
-	public static void deadLineDate() {
-		System.out.println("Dead line: " + LocalDate.now().plusDays(10));
-	}
-
-	public static void printProductsList(Product[] products) {          //метод печати ассортимента
+	public void printProductsList(Product[] products) {          //метод печати ассортимента
 		System.out.println("Наш ассортимент: ");
 		for (int i = 0; i < products.length; i++) {
 			System.out.println(i + 1 + ". " + products[i]);
 		}
 	}
 
-
-	public static void printBucketList(Product[] bucket) {              //метод печати содержимого корзины
+	public void printBucketList(Product[] bucket) {              //метод печати содержимого корзины
 
 		boolean isNotEmpty = false;
 		for (Product product : bucket) {                                //проверка на пустоту корзины
@@ -212,24 +207,38 @@ public class Deal {
 		}
 	}
 
-	public static void add(Scanner sc, Deal deal) {                     //метод добавления продукта в корзину с консоли
+	public void add(Scanner sc, Deal deal) {                     //метод добавления продукта в корзину с консоли
 		System.out.println("Введите номер продукта: ");
 		int index;
 		double quantity;
 		index = sc.nextInt();
 		System.out.println("Введите колличество продуктов: ");
 		quantity = sc.nextDouble();
-		Deal.addToBucket(index, quantity, deal.getProducts(), deal.getBucket());
+		deal.addToBucket(index, quantity, getProducts(), getBucket());
 	}
 
-	public static void remove(Scanner sc, Deal deal) {                  //метод удаления продукта из корзины с консоли
+	public void remove(Scanner sc, Deal deal) {                  //метод удаления продукта из корзины с консоли
 		System.out.println("Введите номер продукта для удаления: ");
 		int index;
 		double quantity;
 		index = sc.nextInt();
 		System.out.println("Введите колличество продуктов: ");
 		quantity = sc.nextDouble();
-		Deal.removeFromBucket(index, quantity, deal.getProducts(), deal.getBucket());
+		deal.removeFromBucket(index, quantity, deal.getProducts(), deal.getBucket());
+	}
+
+	public double calcTotalPrice(Product[] bucket) {                   //Метод подсчёта стоимости всех продуктов
+		double totalPrice = 0;
+		for (Product product : bucket) {
+			if (product != null) {
+				totalPrice += product.getPrice();
+			}
+		}
+		return totalPrice;
+	}
+
+	public void deadLineDate() {
+		System.out.println("Dead line: " + LocalDate.now().plusDays(10));
 	}
 
 	public Person getSeller() {

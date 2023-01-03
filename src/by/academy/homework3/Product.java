@@ -32,16 +32,6 @@ public abstract class Product {
 		return name.equals(product.name);
 	}
 
-	public static double calcTotalPrice(Product[] bucket) {                   //Метод подсчёта стоимости всех продуктов
-		double totalPrice = 0;
-		for (Product product : bucket) {
-			if (product != null) {
-				totalPrice += product.getPrice();
-			}
-		}
-		return totalPrice;
-	}
-
 	public final double calcSubTotalPrice() {                                  //метод подсчёта стоимости продукта
 		return getPrice() * getQuantity() * discount();
 	}
