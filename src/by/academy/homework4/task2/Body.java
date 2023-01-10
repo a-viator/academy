@@ -5,7 +5,6 @@ public class Body {
 	private Heart heart;
 	private Lungs lungs;
 
-
 	public Body() {
 		super();
 		this.heart = new Heart();
@@ -16,7 +15,7 @@ public class Body {
 		public void live() {
 			for (int i = 0; i < Integer.MAX_VALUE; i++) {
 				if (i != 0 && i % 100 == 0) {
-					System.out.println("Knock-knock-knockin' on heaven's door " + i);
+					System.out.println("Knock-knock-knockin' on heaven's door ");
 				}
 			}
 		}
@@ -25,11 +24,10 @@ public class Body {
 	class Lungs {
 		public void live() {
 			for (int i = 0; i < Integer.MAX_VALUE; i++) {
-				if (i != 0 && i % 50 == 0) {
-					System.out.println("breathe in " + i);
-				}
 				if (i != 0 && i % 100 == 0) {
-					System.out.println("breathe out " + i);
+					System.out.println("breathe out ");
+				} else if (i != 0 && i % 50 == 0) {
+					System.out.println("breathe in ");
 				}
 			}
 		}
