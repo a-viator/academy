@@ -1,12 +1,20 @@
+/*
+ * Задание 4.
+ *
+ * Написать свой итератор для массива
+ */
+
 package by.academy.homework4.task4;
 
-import java.util.Iterator;
+import java.util.Arrays;
 
-public class CustomIterator<T> implements Iterator<T> {
+public class CustomIterator<T> {
 
 	private T[] array;
-	private int index;
+	private int index = -1;
+	boolean canRemove = false;
 
+	@SuppressWarnings("unused")
 	public CustomIterator() {
 		super();
 	}
@@ -17,14 +25,29 @@ public class CustomIterator<T> implements Iterator<T> {
 	}
 
 	public T next() {
-		return array[index++];
+		index++;
+		canRemove = true;
+		return array[index];
 	}
 
 	public boolean hasNext() {
-		if (array.length <= index || array == null) {
-			return false;
-		} else {
+		//noinspection RedundantIfStatement
+		if (index + 1 < array.length) {
 			return true;
+		} else {
+			return false;
 		}
+	}
+
+	public void remove() {
+		canRemove = false;
+		T[] tempArray = Arrays.copyOf(array, array.length - 1);
+		System.arraycopy(array, index + 1, tempArray, index, array.length - index - 1);
+		array = tempArray;
+		index--;
+	}
+
+	public T[] getArray() {
+		return array;
 	}
 }
