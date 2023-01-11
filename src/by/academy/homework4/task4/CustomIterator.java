@@ -40,11 +40,15 @@ public class CustomIterator<T> {
 	}
 
 	public void remove() {
-		canRemove = false;
-		T[] tempArray = Arrays.copyOf(array, array.length - 1);
-		System.arraycopy(array, index + 1, tempArray, index, array.length - index - 1);
-		array = tempArray;
-		index--;
+		if (canRemove) {
+			canRemove = false;
+			T[] tempArray = Arrays.copyOf(array, array.length - 1);
+			System.arraycopy(array, index + 1, tempArray, index, array.length - index - 1);
+			array = tempArray;
+			index--;
+		} else {
+			System.err.println("Method \"next()\" was not called");
+		}
 	}
 
 	public T[] getArray() {
