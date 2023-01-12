@@ -4,7 +4,7 @@ public class DateValidator {
 
 	public static boolean validate(String inputDate) {
 
-		if (inputDate.matches("^(1[0-2]|0[1-9])-(3[01]|[12][0-9]|0[1-9])-[0-9]{4}$")) {
+		if (inputDate.matches("([0-2][0-9]||3[0-1])-(0[0-9]||1[0-2])-((19|20)\\d\\d)")) {
 			return true;
 		} else {
 			System.out.println("Введите дату в формате \"dd-MM-yyyy\": ");
