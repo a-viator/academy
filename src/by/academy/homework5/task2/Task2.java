@@ -19,29 +19,18 @@ public class Task2 {
 
 	public static void main(String[] args) {
 
-		double timeToFillArrayList;                                 //время заполнения ArrayList
-		double timeToFillLinkedList;                                //время заполнения LinkedList
-		double timeToGetFromArrayList;                              //время выбора случайных элементов в ArrayList
-		double timeToGetFromLinkedList;                             //время выбора случайных элементов в LinkedList
-
 		ArrayList<Integer> arrayList = new ArrayList<>();
 		LinkedList<Integer> linkedList = new LinkedList<>();
 
-		timeToFillArrayList = fillingTime(arrayList);
-		timeToFillLinkedList = fillingTime(linkedList);
-
 		System.out.print("В добавлении элементов ");
-		timeDifference(timeToFillArrayList, timeToFillLinkedList);
-
-		timeToGetFromArrayList = gettingTime(arrayList);
-		timeToGetFromLinkedList = gettingTime(linkedList);
+		timeDifference(fillingTime(arrayList), fillingTime(linkedList));
 
 		System.out.print("В получении элементов ");
-		timeDifference(timeToGetFromArrayList, timeToGetFromLinkedList);
+		timeDifference(gettingTime(arrayList), gettingTime(linkedList));
 	}
 
 	private static void fillTheList(List<Integer> list) {           //метод заполнения коллекции
-		for (int i = 0; i < 1_000_00; i++) {
+		for (int i = 0; i < 1_000_000; i++) {
 			list.add(i, i);
 		}
 	}
@@ -49,7 +38,7 @@ public class Task2 {
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private static void getRandomElements(List<Integer> list) {     //метод получения рандомного элемента из коллекции
 		Random random = new Random();
-		for (int i = 0; i < 1_000_00; i++) {
+		for (int i = 0; i < 1_000_000; i++) {
 			list.get(random.nextInt(list.size()));
 		}
 	}
