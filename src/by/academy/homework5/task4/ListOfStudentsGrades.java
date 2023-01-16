@@ -19,7 +19,7 @@ public class ListOfStudentsGrades {
 		Students student2 = new Students("Андрей", randomGrade());
 		Students student3 = new Students("Олег", randomGrade());
 		Students student4 = new Students("Татьяна", randomGrade());
-		Students student5 = new Students("Влад", 3);
+		Students student5 = new Students("Влад", randomGrade());
 		Students student6 = new Students("Я", 10);
 
 		ArrayList<Students> studentsArrayList = new ArrayList<>();
@@ -46,8 +46,8 @@ public class ListOfStudentsGrades {
 	private static void bestStudent(Iterator<Students> iterator) {              //метод поиска и вывода первого лучшего ученика
 
 		Students firstBestStudent = new Students();
+		Students helpBestStudent;
 		while (iterator.hasNext()) {
-			Students helpBestStudent;
 			if (firstBestStudent.getGrade() == 0) {
 				firstBestStudent = iterator.next();
 			} else {
