@@ -15,18 +15,17 @@ public class Dictionary {
 
 	public static void main(String[] args) {
 
-		String str = "qwertyq 1234567890 /";
-		char[] array = str.toCharArray();
+		String str = "Qqwertyq / 1234567899!<>,.";
 		Map<Character, Integer> dictionary = new HashMap<>();
 
-		for (char c : array) {
-			int v = 0;
-			for (char value : array) {
-				if (c == value) {
-					v++;
-				}
+		for (int i = 0; i < str.length(); i++) {
+			int value = 1;
+			char symbol = str.charAt(i);
+			if (!dictionary.containsKey(symbol)) {
+				dictionary.put(symbol, 1);
+			} else {
+				dictionary.put(symbol, ++value);
 			}
-			dictionary.put(c, v);
 		}
 		System.out.println(dictionary);
 	}
