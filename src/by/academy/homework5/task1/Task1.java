@@ -42,6 +42,6 @@ public class Task1 {
 	}
 
 	private static <T> Collection<T> removeDuplicates(Collection<T> list) {
-		return new TreeSet<>(list);
+		return new HashSet<>(list);                                             //можно использовать TreeSet.
 	}
 }
