@@ -20,39 +20,34 @@ public class Task4 {
 
 	public static void main(String[] args) throws IOException {
 
-		File dirFiles = new File("src/by/academy/homework6/task4", "files");                //folder for the files
-		if (!dirFiles.exists()) {
+		File dir = new File("src/by/academy/homework6/task4", "files");               //folder for the files
+		if (!dir.exists()) {
 			//noinspection ResultOfMethodCallIgnored
-			dirFiles.mkdirs();
+			dir.mkdirs();
 		}
 
-		File dirResult = new File("src/by/academy/homework6", "task4");                     //folder for the result file
-		if (!dirResult.exists()) {
-			//noinspection ResultOfMethodCallIgnored
-			dirResult.mkdirs();
-		}
-
-		File task2 = new File("src/by/academy/homework6/task2", "Task2.txt");               //Existing file
+		File task2 = new File("src/by/academy/homework6/task2", "Task2.txt");         //Existing file
 		if (task2.exists()) {
 			System.out.println("Исходный файл успешно найден");
-			File result = new File(dirResult, "result.txt");
+
+			File result = new File(dir, "result.txt");
 			if (!result.exists()) {
 				//noinspection ResultOfMethodCallIgnored
 				result.createNewFile();
 			}
 
-			File[] files = dirFiles.listFiles();                                                        //Array of files
+			File[] files = dir.listFiles((dir1, name) -> name.matches("[0-9]+\\.txt"));     //Filtered array of files
 
-			createFiles(dirFiles);
+			createFiles(dir);
 
-			if(files != null) {
+			if (files != null) {
 				fillFiles(files, readFile(task2), task2);
-				result(files,result);
+				result(files, result);
 			}
 		}
 	}
 
-	private static void createFiles(File dir) throws IOException {                                      //creates 100 files in the folder
+	private static void createFiles(File dir) throws IOException {                                 //creates 100 files in the folder
 		for (int i = 1; i <= 100; i++) {
 			File file = new File(dir, i + ".txt");
 			if (!file.exists()) {
@@ -62,7 +57,7 @@ public class Task4 {
 		}
 	}
 
-	private static String readFile(File task2) throws IOException {                                     //reads existing file and returns String
+	private static String readFile(File task2) throws IOException {                                //reads existing file and returns String
 
 		BufferedReader br = new BufferedReader(new FileReader(task2));
 		StringBuilder s = new StringBuilder();
@@ -91,14 +86,13 @@ public class Task4 {
 		}
 	}
 
-	private static void result(File[] files, File dirResult) {                                          //fills result file
+	private static void result(File[] files, File dir) {                                                //fills result file
 
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(dirResult))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(dir))) {
 			for (File f : files) {
 				bw.write(f.getName() + " - " + f.length() + "\n");
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
