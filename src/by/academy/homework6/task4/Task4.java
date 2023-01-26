@@ -36,7 +36,7 @@ public class Task4 {
 				result.createNewFile();
 			}
 
-			File[] files = dir.listFiles((dir1, name) -> name.matches("[0-9]+\\.txt"));     //Filtered array of files
+			File[] files = dir.listFiles((file, name) -> name.matches("^[0-9]+\\.txt"));     //Filtered array of files
 
 			createFiles(dir);
 
