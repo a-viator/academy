@@ -44,6 +44,8 @@ public class Task4 {
 				fillFiles(files, readFile(task2), task2);
 				result(files, result);
 			}
+		} else {
+			throw new IOException("Исходный файл не найден");
 		}
 	}
 
@@ -67,9 +69,8 @@ public class Task4 {
 			while ((tempString = br.readLine()) != null) {
 				s.append(tempString);
 			}
-			System.out.println("\n" + "Размер исходного файла \"" + task2.getName() +
-					"\" составляет " + task2.length());
-
+			System.out.println("Размер исходного файла \"" + task2.getName() +
+					"\" составляет " + task2.length() + " байт");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
