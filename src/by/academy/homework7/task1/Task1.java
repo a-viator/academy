@@ -24,12 +24,6 @@ public class Task1 {
 
 		System.out.println(longList);
 
-		System.out.println(longList.stream()
-				.map(i -> i * Math.PI - 20)
-				.filter(i -> i < 100)
-				.sorted()
-				.toList());
-
 		Map<Double, String> map = longList.stream()
 				.map(i -> i * Math.PI - 20)
 				.filter(i -> i < 100)
