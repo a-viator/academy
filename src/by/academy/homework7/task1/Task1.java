@@ -9,10 +9,8 @@
 
 package by.academy.homework7.task1;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,21 +18,13 @@ public class Task1 {
 
 	public static void main(String[] args) {
 
-		List<Long> longList = generateRandomLong(100L, 100);
-
-		System.out.println(longList);
-
-		Map<Double, String> map = longList.stream()
+		Map<Double, String> map = Stream.generate(() -> new Random().nextLong(100L))
+				.limit(100)
 				.map(i -> i * Math.PI - 20)
 				.filter(i -> i < 100)
 				.sorted()
 				.skip(3)
 				.collect(Collectors.toMap(k -> k, v -> "Number: " + v, (first, second) -> first));
 		System.out.println(map);
-	}
-
-	private static List<Long> generateRandomLong(Long seed, Integer size) {
-		Supplier<Long> s = () -> new Random().nextLong(100);
-		return Stream.generate(s).limit(100).toList();
 	}
 }
