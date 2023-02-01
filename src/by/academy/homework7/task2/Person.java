@@ -5,10 +5,10 @@ import java.time.Period;
 
 public class Person {
 
-	public String firstName;
-	public String lastName;
-	public LocalDate dateOfBirth;
-	public int age;
+	private String firstName;
+	private String lastName;
+	private LocalDate dateOfBirth;
+	private int age;
 
 	public Person() {
 		super();

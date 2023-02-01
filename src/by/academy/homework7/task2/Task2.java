@@ -58,8 +58,8 @@ public class Task2 {
 			System.out.println("getDeclaredMethods()");
 			System.out.println(Arrays.toString(userClass.getDeclaredMethods()));             //getDeclaredMethods()
 
-			System.out.println("getField(\"name\")");
-//			System.out.println(userClass.getField("login"));                                 //getField("name")
+//			System.out.println("getField(\"name\")");
+//			System.out.println(User.class.getSuperclass().getField("firstName"));            //getField("name")
 			System.out.println("getDeclaredField(\"name\")");
 			System.out.println(userClass.getDeclaredField("login"));                   //getDeclaredField("name")
 
@@ -68,16 +68,20 @@ public class Task2 {
 			System.out.println("getDeclaredFields()");
 			System.out.println(Arrays.toString(userClass.getDeclaredFields()));              //getDeclaredFields()
 
-			Field userFirstName = userClass.getField("firstName");
+			Field userFirstName = User.class.getSuperclass().getDeclaredField("firstName");
+			userFirstName.setAccessible(true);
 			userFirstName.set(user, "Johnny");
 
-			Field userLastName = userClass.getField("lastName");
+			Field userLastName = User.class.getSuperclass().getDeclaredField("lastName");
+			userLastName.setAccessible(true);
 			userLastName.set(user, "Silverhand");
 
-			Field userDateOfBirth = userClass.getField("dateOfBirth");
+			Field userDateOfBirth = User.class.getSuperclass().getDeclaredField("dateOfBirth");
+			userDateOfBirth.setAccessible(true);
 			userDateOfBirth.set(user, LocalDate.of(1988, Month.NOVEMBER, 16));
 
-			Field userAge = userClass.getField("age");
+			Field userAge = User.class.getSuperclass().getDeclaredField("age");
+			userAge.setAccessible(true);
 			userAge.set(user, Period.between
 					(LocalDate.of(1988, Month.NOVEMBER, 16), LocalDate.now()).getYears());
 
