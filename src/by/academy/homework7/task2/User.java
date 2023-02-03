@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class User extends Person {
 
+	public String greeting;
 	private String login;
 	private String password;
 	private String email;
@@ -13,11 +14,12 @@ public class User extends Person {
 		super();
 	}
 
-	User(String firstName, String lastName, LocalDate dateOfBirth, String login, String password, String email) {
+	User(String firstName, String lastName, LocalDate dateOfBirth, String login, String password, String email, String greeting) {
 		super(firstName, lastName, dateOfBirth);
 		this.login = login;
 		this.password = password;
 		this.email = email;
+		this.greeting = greeting;
 	}
 
 	public String getLogin() {
@@ -47,10 +49,20 @@ public class User extends Person {
 		this.email = email;
 	}
 
+	public String getGreeting() {
+		return greeting;
+	}
+
+	@SuppressWarnings("unused")
+	public void setGreeting(String greeting) {
+		this.greeting = greeting;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
-				"login='" + login + '\'' +
+				"greeting='" + greeting + '\'' +
+				", login='" + login + '\'' +
 				", password='" + password + '\'' +
 				", email='" + email + '\'' +
 				"} " + super.toString();
@@ -65,5 +77,6 @@ public class User extends Person {
 		System.out.printf("%-15s%27s%n", "Логин: ", getLogin());
 		System.out.printf("%-15s%27s%n", "Пароль: ", getPassword());
 		System.out.printf("%-15s%27s%n", "e-mail: ", getEmail());
+		System.out.printf("%-15s%27s%n", "greetings: ", getGreeting());
 	}
 }

@@ -41,7 +41,7 @@ public class Task2 {
 
 		User user = new User
 				("Vincent", "V", LocalDate.of(2000, Month.JUNE, 10),
-						"StreetKid", "Cyberpunk2077", "v.streetkid@nightcity.com");
+						"StreetKid", "Cyberpunk2077", "v.streetkid@nightcity.com", "bye");
 
 		user.printUserInfo();
 
@@ -58,8 +58,8 @@ public class Task2 {
 			System.out.println("getDeclaredMethods()");
 			System.out.println(Arrays.toString(userClass.getDeclaredMethods()));             //getDeclaredMethods()
 
-//			System.out.println("getField(\"name\")");
-//			System.out.println(User.class.getSuperclass().getField("firstName"));            //getField("name")
+			System.out.println("getField(\"name\")");
+			System.out.println(User.class.getField("greeting"));                       //getField("name")
 			System.out.println("getDeclaredField(\"name\")");
 			System.out.println(userClass.getDeclaredField("login"));                   //getDeclaredField("name")
 
@@ -96,6 +96,9 @@ public class Task2 {
 			Field userEmail = userClass.getDeclaredField("email");
 			userEmail.setAccessible(true);
 			userEmail.set(user, "johnny.silverhand@gmail.com");
+
+			Field userGreeting = userClass.getField("greeting");
+			userGreeting.set(user, "hello");
 
 			Method info = userClass.getDeclaredMethod("printUserInfo");
 			info.invoke(user);
